@@ -1,0 +1,5 @@
+export  const startFetching = "START_FETCHING"
+export  const successFetching = "SUCCESS_FETCHING"
+export  const getError = "GET_ERROR"
+export  const loadingStart = "LOADING_START"
+export  const loadingEnd = "LOADING_END"

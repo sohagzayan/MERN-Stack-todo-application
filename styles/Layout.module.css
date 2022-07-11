@@ -1,0 +1,33 @@
+
+.layout{
+        display : grid ;
+        grid-template-columns: 2fr 10fr;   
+        width : 100%; 
+}
+
+
+.sideNavigationWrapper{
+        position: fixed;
+        padding : 70px 7px; 
+        top : 0;
+        z-index : 2;
+        height : 100vh;
+        background-color: #FDFDFC;
+
+}
+
+
+
+
+@media (max-width : 976px) {
+        .layout{
+                grid-template-columns: 0 12fr;    
+        }
+        .sideNavigationWrapper{   
+                left : -200px
+        }
+        .active{ 
+                left : 0px
+        }
+    
+}
