@@ -31,7 +31,7 @@ const StatusModal = ({ currentTask , query }) => {
         <button onClick={()=>handleStatusUpdate(_id)} className="btn bg-light_cine border-none mt-5">Ok</button>
          </div>
           <div className="modal-action">
-            <label for="my-modal-6" className="btn btn-sm btn-circle absolute right-2 top-2 ">✕</label>
+            <label htmlFor="my-modal-6" className="btn btn-sm btn-circle absolute right-2 top-2 ">✕</label>
           </div>
         </div>
       </div>

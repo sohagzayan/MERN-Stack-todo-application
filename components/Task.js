@@ -32,7 +32,7 @@ const Task = ({task , handleCurrentTask}) => {
             <span className="flex  items-center">
               <MdDateRange className="text-xl mr-2   " />
               {date}
-              <label onClick={()=> handleCurrentTask(task)} for="my-modal-6" className="cursor-pointer">
+              <label onClick={()=> handleCurrentTask(task)} htmlFor="my-modal-6" className="cursor-pointer">
               <AiOutlineEdit className="text-xl mr-2 ml-3  text-dark_purple" />
               </label>
               
