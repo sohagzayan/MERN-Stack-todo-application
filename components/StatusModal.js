@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState , useEffect} from "react";
 import axios from 'axios'
 import {useDispatch , useSelector} from 'react-redux'
 import {startFetching , closeModal , openModal} from '../store/type/type'
@@ -15,6 +15,9 @@ const StatusModal = ({ currentTask , query }) => {
                 dispatch(task(query))
         }
 
+        useEffect(()=>{
+          setStatus(setStatus)
+        },[])
   return (
     <div>
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -22,7 +25,7 @@ const StatusModal = ({ currentTask , query }) => {
         <div className="modal-box">
          <div className="pt-7">
          <select onChange={(e)=> setStatus(e.target.value)} className="select w-full border-2 bg-[#11bde042] ">
-                <option>{taskStatus}</option>
+                <option className="">{taskStatus}</option>
                 <option>New</option>
                 <option>Completed</option>
                 <option>Progress</option>
