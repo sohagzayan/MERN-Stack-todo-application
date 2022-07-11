@@ -32,7 +32,7 @@ const Layout = ({children}) => {
                         <div className={classes.layout}>
                                 <div className="">
                                         <div className={showNavigation ? `${classes.sideNavigationWrapper} ${classes.active}` : classes.sideNavigationWrapper}>
-                                                <SideNavigation />
+                                                <SideNavigation setShowNavigation={setShowNavigation} showNavigation={showNavigation} />
                                         </div>
                                 </div>
                                 <div className={classes.contentArea}>

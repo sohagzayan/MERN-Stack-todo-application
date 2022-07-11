@@ -9,12 +9,18 @@ import StatusModal from '../components/StatusModal';
 import { useRouter } from 'next/router';
 import {useDispatch , useSelector} from 'react-redux'
 import task from '../store/action/task'
+import {openModal , closeModal} from '../store/type/type'
+import Image from 'next/image'
+
 const InProgress = ({data}) => {
       const [currentTask , setCurrentTask] = useState({})
      const dispatch =  useDispatch()
      const taskData = useSelector((current)=> current.getTaskReducer)
+     const modalStatus = useSelector((current)=> current.closeModalReducer)
+
      
       const handleCurrentTask = (task)=>{
+            dispatch({type : openModal})
               setCurrentTask(task)
       }
       useEffect(()=>{
@@ -30,7 +36,26 @@ const InProgress = ({data}) => {
                         /> )
                   }
             </div>
-            <StatusModal currentTask={currentTask} query="Progress" />
+            {
+                                taskData?.tasks.length > 0
+                                ?
+                                null
+                                :
+                                <div className="flex items-center justify-center pt-36 flex-col">
+                                <h3 className="font-bold md:text-3xl text-xl mb-3">
+                                   Yat Not Available Task
+                                </h3>   
+                                   <Image src="/verified.png" width={150} height={150} />
+                                </div>
+
+                         }     
+            {
+                  modalStatus.open
+                  ?
+                  <StatusModal currentTask={currentTask} query="Progress" />
+                  :
+                  null
+            }
       </div>;
 };
 

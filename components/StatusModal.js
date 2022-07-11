@@ -1,16 +1,16 @@
 import React,{useState} from "react";
 import axios from 'axios'
 import {useDispatch , useSelector} from 'react-redux'
-import {startFetching} from '../store/type/type'
+import {startFetching , closeModal , openModal} from '../store/type/type'
 import task from '../store/action/task'
 const StatusModal = ({ currentTask , query }) => {
         const dispatch = useDispatch()
         
         const [status , setStatus] = useState("")
         const {taskStatus , _id} = currentTask
-
         const handleStatusUpdate = async (id)=>{
-                const res = await axios.put(`https://full-stack-todo-application.vercel.app/api/task/${id}`, {taskStatus : status})
+                dispatch({type : closeModal})
+                const res = await axios.put(`/api/task/${id}`, {taskStatus : status})
                 console.log(res)
                 dispatch(task(query))
         }

@@ -8,16 +8,16 @@ const Dashboard = () => {
    const [completedStatus , setCompleted] = useState([])
    const [canceledStatus , setCanceled] = useState([])
    useEffect(()=>{
-       axios.get('https://full-stack-todo-application.vercel.app/api/task?statusType=New')
+       axios.get('/api/task?statusType=New')
       .then((res)=> setNewStatus(res.data))
      
-       axios.get('https://full-stack-todo-application.vercel.app/api/task?statusType=Progress')
+       axios.get('/api/task?statusType=Progress')
       .then((res)=> setProgress(res.data))
 
-       axios.get('https://full-stack-todo-application.vercel.app/api/task?statusType=Completed')
+       axios.get('/api/task?statusType=Completed')
       .then((res)=> setCompleted(res.data))
 
-       axios.get('https://full-stack-todo-application.vercel.app/api/task?statusType=Canceled')
+       axios.get('/api/task?statusType=Canceled')
       .then((res)=> setCanceled(res.data))
      
    },[])

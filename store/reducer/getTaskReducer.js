@@ -12,7 +12,8 @@ const getTaskReducer = (state = initialState ,  action)=>{
                 case startFetching :
                         return {
                                 ...state,
-                                loading : true
+                                loading : true,
+                                tasks : [],
                         }
                 case successFetching :
                         return {

@@ -40,7 +40,7 @@ const CreateNew = () => {
         return (
                 <>
                 <div className="mt-10 ">
-                      <form onSubmit={handleCreateNewTask} className="bg-light_white shadow-md w-[60%] mx-auto p-8 rounded-xl ">
+                      <form onSubmit={handleCreateNewTask} className="bg-light_white shadow-md lg:w-[60%] w-[90%] mx-auto p-8 rounded-xl ">
                                 <span className="font-medium  text-blue_dark pb-1 inline-block">{taskName.length}/26</span>
                                 <input value={taskName} onChange={(e)=> setTaskName(e.target.value)} type="text" placeholder="Task Name" className={taskName.length > 26 ? 'input input-bordered w-full mb-4 border-2 border-[#F92672] text-[#F92672] font-bold' : 'input font-bold input-bordered w-full mb-4'} /> 
                                 <span className="font-medium  text-blue_dark">{taskDes.length}/120</span>

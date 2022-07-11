@@ -5,8 +5,12 @@ import getTaskReducer from './../reducer/getTaskReducer';
 const getTask = (query)=>{
         return async (dispatch)=>{
                 dispatch({type : startFetching})
-                 await axios.get(`https://full-stack-todo-application.vercel.app/api/task/?statusType=${query}`)
-                 .then((res) =>  dispatch({type : successFetching , payload : {data : res.data , query : 'New'}}))
+                 await axios.get(`/api/task/?statusType=${query}`)
+                 .then((res) => {
+                        setTimeout(() => {
+                                dispatch({type : successFetching , payload : {data : res.data , query : 'New'}})
+                        }, 400);
+                 })
                  .catch((error)=> dispatch({type : getError , payload : {error : error.message}}))
         }
 }
