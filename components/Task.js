@@ -12,7 +12,7 @@ const Task = ({task , handleCurrentTask}) => {
         const dispatch = useDispatch()
         const {taskName , taskDes , date, taskStatus , _id} = task
         const handleDeleteTask = async (id)=>{
-            await axios.delete(`http://localhost:3000/api/task/${id}`)
+            await axios.delete(`https://full-stack-todo-application.vercel.app/api/task/${id}`)
             .then((res)=> console.log('delete Success'))
             dispatch(taskAction(taskStatus))
         }

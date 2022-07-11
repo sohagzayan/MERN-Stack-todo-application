@@ -10,7 +10,7 @@ const StatusModal = ({ currentTask , query }) => {
         const {taskStatus , _id} = currentTask
 
         const handleStatusUpdate = async (id)=>{
-                const res = await axios.put(`http://localhost:3000/api/task/${id}`, {taskStatus : status})
+                const res = await axios.put(`https://full-stack-todo-application.vercel.app/api/task/${id}`, {taskStatus : status})
                 console.log(res)
                 dispatch(task(query))
         }
