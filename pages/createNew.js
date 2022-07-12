@@ -2,6 +2,9 @@ import React,{useState , useEffect} from 'react';
 import axios from 'axios'
 import ErrorAlert from '../components/ErrorAlert';
 import {useRouter} from 'next/router'
+import {Provider} from 'react-redux'
+import store from '../store/store'
+import  Layout  from '../components/Layout'
 const CreateNew = () => {
         const router = useRouter()
         const {pathname} = router
@@ -60,6 +63,14 @@ const CreateNew = () => {
         );
 }
 
+CreateNew.getLayout = function getLayout(page) {
+        return (
+          <Provider store={store}>
+              <Layout>
+                {page}
+              </Layout>
+          </Provider>
+        )
+      }
 
 export default CreateNew;
-('')

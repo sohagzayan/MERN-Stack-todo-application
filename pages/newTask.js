@@ -8,7 +8,9 @@ import task from '../store/action/task'
 import {openModal , closeModal} from '../store/type/type'
 import UseTaskData from '../hocks/useTaskData';
 import Image from 'next/image'
-
+import  Layout  from '../components/Layout'
+import {Provider} from 'react-redux'
+import store from '../store/store'
 const NewTask = ({data}) => {
         const [taskList , setTaskList] = UseTaskData('New')
         console.log(taskList)
@@ -69,5 +71,17 @@ const NewTask = ({data}) => {
                 </div>
         );
 }
+
+NewTask.getLayout = function getLayout(page) {
+        return (
+                <Provider store={store}>
+                        <Layout>
+                                {page}
+                        </Layout>
+                </Provider>
+        )
+      }
+
+
 
 export default NewTask;

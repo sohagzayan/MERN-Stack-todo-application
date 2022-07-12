@@ -5,7 +5,9 @@ import Task from "../components/Task";
 import StatusModal from "../components/StatusModal";
 import {openModal , closeModal} from '../store/type/type'
 import Image from 'next/image'
-
+import {Provider} from 'react-redux'
+import store from '../store/store'
+import  Layout  from '../components/Layout'
 const Canceled = () => {
   const [currentTask, setCurrentTask] = useState({});
   const dispatch = useDispatch();
@@ -58,4 +60,17 @@ const Canceled = () => {
       </div>
   );
 };
+
+Canceled.getLayout = function getLayout(page) {
+  return (
+    <Provider store={store}>
+        <Layout>
+          {page}
+        </Layout>
+    </Provider>
+  )
+}
+
+
+
 export default Canceled;

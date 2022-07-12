@@ -6,7 +6,9 @@ import Task from "../components/Task";
 import task from '../store/action/task'
 import {openModal , closeModal} from '../store/type/type'
 import Image from 'next/image'
-
+import {Provider} from 'react-redux'
+import store from '../store/store'
+import  Layout  from '../components/Layout'
 const Complete = () => {
         const [currentTask , setCurrentTask] = useState({})
         const dispatch =  useDispatch()
@@ -55,5 +57,17 @@ const Complete = () => {
     </div>
   );
 };
+
+
+Complete.getLayout = function getLayout(page) {
+  return (
+    <Provider store={store}>
+        <Layout>
+          {page}
+        </Layout>
+    </Provider>
+  )
+}
+
 
 export default Complete;

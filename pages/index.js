@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import Dashboard from './dashboard';
-
+import {Provider} from 'react-redux'
+import store from '../store/store'
 export default function Home() {
   return (
     <div>
@@ -17,7 +18,16 @@ export default function Home() {
         />
       </Head>
       <Dashboard />
-      
     </div>
   );
+}
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <Provider store={store}>
+        <Layout>
+          {page}
+        </Layout>
+    </Provider>
+  )
 }

@@ -3,7 +3,11 @@ import {Provider} from 'react-redux'
 import store from '../store/store'
 import Layout from '../components/Layout'
 function MyApp({ Component, pageProps }) {
-  return <Provider store={store}> <Layout> <Component {...pageProps} /> </Layout>  </Provider>
+
+  const getLayout = Component.getLayout || ((page) => page)
+
+  
+  return getLayout( <Provider store={store}>  <Component {...pageProps} /> </Provider>)
 }
 
 export default MyApp

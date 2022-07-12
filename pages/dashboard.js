@@ -1,7 +1,7 @@
 import {useEffect , useState} from 'react'
 import axios from 'axios'
 import { motion } from "framer-motion"
-
+import Layout from '../components/Layout'
 const Dashboard = () => {
    const [newStatus , setNewStatus] = useState([])
    const [progressStatus , setProgress] = useState([])
@@ -85,4 +85,14 @@ const Dashboard = () => {
         </div>
   </div>;
 };
+
+Dashboard.getLayout = function getLayout(page) {
+   return (
+     <Layout>
+         {page}
+     </Layout>
+   )
+ }
+
+
 export default Dashboard;

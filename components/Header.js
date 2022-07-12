@@ -1,5 +1,6 @@
 import React from "react";
 import {AiOutlineMenuUnfold} from 'react-icons/ai'
+import Link from 'next/link'
 const Header = ({showNavigation , setShowNavigation}) => {
   return (
     <div className="bg-light_white shadow-md sticky top-0 z-50">
@@ -44,6 +45,16 @@ const Header = ({showNavigation , setShowNavigation}) => {
               </li>
               <li>
                 <a>Logout</a>
+              </li>
+              <li>
+              <Link href="/signup">
+                    <a>Sign Up</a>
+              </Link>
+              </li>
+              <li>     
+              <Link href="/login">
+                    <a>Login</a>
+              </Link>
               </li>
             </ul>
           </div>
