@@ -10,7 +10,7 @@ const Signup = () => {
                            <form className="flex flex-col items-center justify-center">
                                 <h2 className="font-bold mb-3 text-xl">Sign Up</h2>
                                 <input type="email" placeholder="User Email" className="input input-bordered w-full mb-3" />
-                                <input type="text" placeholder="Fast Name" class="input input-bordered w-full mb-3" />
+                                <input type="text" placeholder="Fast Name" className="input input-bordered w-full mb-3" />
                                 <input type="text" placeholder="Last Name" className="input input-bordered w-full mb-3" />
                                 <input type="number" placeholder="Mobile" className="input input-bordered w-full mb-3" />
                                 <input type="password" placeholder="User Password" className="input input-bordered w-full mb-3" />
