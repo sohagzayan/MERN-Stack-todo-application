@@ -1,16 +1,16 @@
 import mongoose from 'mongoose'
 
-const token = new mongoose.Schema({
+const token =  mongoose.Schema({
         userId : {
                 type : Number,
-                required : true,
+                // required : true,
                 unique : true
         },
         token : {
                 type : String ,
-                required : true
+                // required : true
         },
-        createdAt: { type: Date, default: Date.now, expires: 3600 },
+        // createdAt: { type: Date, default: Date.now, expires: 3600 },
 })
 
 export default mongoose.models.Token || mongoose.model("Token" , token)

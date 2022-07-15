@@ -9,15 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.5",
     "aos": "^2.3.4",
     "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "crypto": "^1.0.1",
     "daisyui": "^2.18.1",
     "framer-motion": "^6.4.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.4",
     "next": "12.2.1",
+    "nodemailer": "^6.7.7",
     "react": "18.2.0",
     "react-bar-loader": "^1.0.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.33.1",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
     "react-spinners": "^0.13.3",
@@ -25,7 +31,8 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "sweetalert": "^2.1.2",
-    "vercel": "^27.0.1"
+    "vercel": "^27.0.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

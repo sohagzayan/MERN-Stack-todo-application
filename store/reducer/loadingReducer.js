@@ -8,12 +8,12 @@ const loadingReducer = (state = initialState , action)=> {
                 case loadingStart:
                      return {
                         ...state,
-                        loading : state.loading = true
+                        loading : true
                      } 
                 case loadingEnd:
                      return {
                         ...state,
-                        loading : state.loading = false
+                        loading : false
                      } 
                 default:
                       return state

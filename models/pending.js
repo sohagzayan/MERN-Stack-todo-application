@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const user =  mongoose.Schema({
+const pending =  mongoose.Schema({
         email : {
                 type : String,
                 required : true
@@ -21,7 +21,10 @@ const user =  mongoose.Schema({
                 type : String,
                 required : true
         },
- 
+        verified : {
+                type : Boolean,
+                default : false
+        }
 })
 
-export default mongoose.models.User || mongoose.model('User' , user)
+export default mongoose.models.Pending || mongoose.model('Pending' , pending)

@@ -11,6 +11,7 @@ import Image from 'next/image'
 import  Layout  from '../components/Layout'
 import {Provider} from 'react-redux'
 import store from '../store/store'
+
 const NewTask = ({data}) => {
         const [taskList , setTaskList] = UseTaskData('New')
         console.log(taskList)

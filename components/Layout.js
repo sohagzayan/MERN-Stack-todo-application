@@ -5,28 +5,29 @@ import Header from './Header'
 import Loading from './Loading';
 import {useDispatch , useSelector} from 'react-redux'
 import RingLoader from "react-spinners/RingLoader";
-
+import {useRouter} from "next/router"
+import authAction from '../store/action/auth'
 const Layout = ({children}) => {
+        const authState = useSelector((current)=> current.authReducer)
+        console.log(authState)
+        const router = useRouter()
         const [globalLoading , setGlobalLoading] = useState(true)
         const dispatch = useDispatch()
         const loadingConfig = useSelector((current)=> current.getTaskReducer)
         const [showNavigation , setShowNavigation] = useState(false)
-        console.log(loadingConfig)
         useEffect(()=>{
                 setGlobalLoading(false)
-        },[globalLoading])
+          },[])
         return (
                 <>
                 <Header setShowNavigation={setShowNavigation} showNavigation={showNavigation}/>
                 {
                         loadingConfig.loading
-                         ?
+                        ?
                         <Loading />
                         :
                         null
                 }
-
-
 
                 <div >
                         <div className={classes.layout}>
