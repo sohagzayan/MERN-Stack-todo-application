@@ -11,7 +11,7 @@ export default async function user(req , res){
                 }
                 const pendingUser = await Pending.findOne({_id : query.id})
                 const {email , name , lastName , mobile , password} = pendingUser
-                const verifyUser = await User({email , name , lastName , mobile , password})
+                const verifyUser = await User({email , name , lastName , mobile , password , verified : true})
                 await verifyUser.save()
                 await pendingUser.remove();
                 res.send("successfully verify");

@@ -1,39 +1,39 @@
-import Pending from "../../../models/pending"
-import User from "../../../models/user"
-import bcrypt from 'bcrypt'
-import dbConnection from '../../../utility/dbConnection';
-import {sendConfirmationEmail} from '../../../utility/sendEmail'
-export default async function user(req , res){
-        const {method} = req
-        dbConnection()
-       if(method == "POST"){
-           try {
-                        const verifiedUser = await  User.find({email : req.body.email})
-                        const pendingUser = await  Pending.find({email : req.body.email})
-
-                         if(verifiedUser.length > 0 ) {
-                           return res.send({message : 'This User already verified !'})  
-                         }      
-
-                         if(pendingUser.length > 0 ) {
-                           return res.send({message : 'already sent confirmation email please check and active your account !'})  
-                         }      
-
-                        const hashedPassword = await bcrypt.hash(req.body.password , 10)
-                        const newUser = await Pending({
-                                email : req.body.email,
-                                name : req.body.name,
-                                lastName : req.body.lastName,
-                                mobile : req.body.mobile,
-                                password : hashedPassword
-                        })
-                        await newUser.save()
-                        // console.log(newUser._id)
-                        await sendConfirmationEmail({toUser : newUser , hash : newUser._id})
-                        res.status(200).json({message : "Successfully Sign in User and Email Send Your email" , newUser : newUser})
-                } 
-                        catch (error) {
-                        res.status(500).json(error) 
-                }     
-       }
+import Pending from "../../../models/pending";
+import User from "../../../models/user";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import dbConnection from "../../../utility/dbConnection";
+import { sendConfirmationEmail } from "../../../utility/sendEmail";
+export default async function user(req, res) {
+  const { method } = req;
+  dbConnection();
+  if (method == "POST") {
+    console.log("req body", req.body);
+    try {
+      const userData = req.body;
+      const { avatar, name, email, password } = userData;
+      const hashPassword = await bcrypt.hash(password, 10);
+      const user = await User.create({
+        name,
+        email,
+        password: hashPassword,
+        avatar: avatar,
+      });
+      const token = await jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "5h",
+      });
+      res.json({
+        success: true,
+        user,
+        token,
+      });
+    } catch (error) {
+      console.log("error", error);
+      console.log("error messagess", error.message);
+      res.status(500).json({
+        success: false,
+        error: error.message,
+      });
+    }
+  }
 }

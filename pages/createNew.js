@@ -5,27 +5,33 @@ import {useRouter} from 'next/router'
 import {Provider} from 'react-redux'
 import store from '../store/store'
 import  Layout  from '../components/Layout'
+import cookie from 'js-cookie'
 const CreateNew = () => {
         const router = useRouter()
         const {pathname} = router
-        
-        // console.log(pathname)
+        const token = cookie.get('AuthToken')
+        const userId = cookie.get('userId')
         const [showErrorAlert , setShowErrorAlert] = useState(false)
         const [taskName , setTaskName] = useState("")
         const [taskDes , setTaskDes] = useState("")
         const currentDate = new Date().toLocaleDateString()  
-        console.log(taskDes.length)
         const handleCreateNewTask = async (e)=>{
                 e.preventDefault()
+                console.log(userId)
                 const newTask = {
                         taskName,
                         taskDes,
-                        date : currentDate
+                        date : currentDate,
+                        userId : userId
                 }
                 if(taskName.length > 26 || taskDes.length >= 120 || taskName.length <= 0 || taskDes.length <= 0){
                         setShowErrorAlert(true)
                 }else{
-                        await axios.post('/api/task',newTask) 
+                        await axios.post('/api/task',newTask, {
+                                headers: {
+                                        Authorization: `Bearar ${token}`
+                                }
+                        }) 
                         .then((res)=>  console.log(res))
                         .catch((error)=> console.log(error))
                         if(pathname == '/createNew' ){
@@ -43,7 +49,7 @@ const CreateNew = () => {
         return (
                 <>
                 <div className="mt-10 ">
-                      <form onSubmit={handleCreateNewTask} className="bg-light_white shadow-md lg:w-[60%] w-[90%] mx-auto p-8 rounded-xl ">
+                      <form onSubmit={handleCreateNewTask} className="bg-light_white  shadow-md lg:w-[60%] w-[90%] mx-auto p-8 rounded-xl ">
                                 <span className="font-medium  text-blue_dark pb-1 inline-block">{taskName.length}/26</span>
                                 <input value={taskName} onChange={(e)=> setTaskName(e.target.value)} type="text" placeholder="Task Name" className={taskName.length > 26 ? 'input input-bordered w-full mb-4 border-2 border-[#F92672] text-[#F92672] font-bold' : 'input font-bold input-bordered w-full mb-4'} /> 
                                 <span className="font-medium  text-blue_dark">{taskDes.length}/120</span>
@@ -73,4 +79,5 @@ CreateNew.getLayout = function getLayout(page) {
         )
       }
 
-export default CreateNew;
+export default  CreateNew;
+

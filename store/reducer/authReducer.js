@@ -4,6 +4,7 @@ import {authLoading , authSuccess , authError} from '../type/type'
 const initialValue = {
       loading : false,
       auth : {},
+      isLoggedIn : false,
       error : ""   
 }
 
@@ -15,6 +16,7 @@ const authReducer = (state = initialValue , action)=> {
                                 ...state,
                                 loading :  true,
                                 auth :  {},
+                                isLoggedIn : false ,
                                 error :  ""
                        } 
                 case authSuccess:
@@ -22,6 +24,7 @@ const authReducer = (state = initialValue , action)=> {
                                 ...state,
                                 loading :  false,
                                 auth :  action.payload,
+                                isLoggedIn : true ,
                                 error :  ""
                        } 
                 case authError:
@@ -29,6 +32,7 @@ const authReducer = (state = initialValue , action)=> {
                                 ...state,
                                 loading :  false,
                                 auth :  {},
+                                isLoggedIn : false ,
                                 error :  action.payload
                        } 
                         

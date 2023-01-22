@@ -5,9 +5,10 @@ import dbConnection from "../../../utility/dbConnection";
 export default async function user(req, res) {
   const { method , query } = req;
   dbConnection();
+  console.log("id => " + query.id)
   if (method == "GET") {
     try {
-            const activeUser = await User.findOne({id : query.id})
+            const activeUser = await User.findOne({_id : query.id})
             console.log(activeUser)
             res.send(activeUser)
 

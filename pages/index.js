@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+
 import Image from "next/image";
 import Layout from "../components/Layout";
-import Dashboard from './dashboard';
-import {Provider} from 'react-redux'
-import store from '../store/store'
+import Dashboard from "./dashboard";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import store from "../store/store";
+
 export default function Home() {
   return (
     <div>
@@ -25,9 +29,7 @@ export default function Home() {
 Home.getLayout = function getLayout(page) {
   return (
     <Provider store={store}>
-        <Layout>
-          {page}
-        </Layout>
+      <Layout>{page}</Layout>
     </Provider>
-  )
-}
+  );
+};

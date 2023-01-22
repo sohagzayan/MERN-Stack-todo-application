@@ -13,6 +13,8 @@ export default async function task(req , res){
         }else if(method  === "GET"){
           const getAllTask = await TaskSchema.find()
           res.send(getAllTask)      
+
+          
         }else if(method  === "DELETE"){
           const deleteTask = await TaskSchema.findByIdAndDelete(query.id)
           res.send(deleteTask)
